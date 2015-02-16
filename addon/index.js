@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import Widget from 'ember-eureka/widget';
+import WidgetApplication from 'ember-eureka/widget-application';
 
-export default Widget.extend({
+export default WidgetApplication.extend({
     currentRouteName: Ember.computed.alias('application.currentRouteName'),
 
     menuItems: function() {
