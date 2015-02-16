@@ -1,6 +1,6 @@
 # Eureka-widget-application-menu
 
-This README outlines the details of collaborating on this Ember addon.
+A menu for Eureka's applications.
 
 ## Installation
 

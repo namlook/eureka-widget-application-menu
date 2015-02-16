@@ -1,7 +1,7 @@
 {
   "name": "eureka-widget-application-menu",
   "version": "0.0.1",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A menu for Eureka's applications.",
   "directories": {
     "doc": "doc",
     "test": "tests"
