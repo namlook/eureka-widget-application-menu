@@ -2,31 +2,44 @@ import Ember from 'ember';
 import WidgetApplication from 'ember-eureka/widget-application';
 
 export default WidgetApplication.extend({
-    currentRouteName: Ember.computed.alias('application.currentRouteName'),
 
     menuItems: function() {
+
+        var currentRouteName = this.get('currentRouteName');
+
         var items = this.get('config.items');
         if (!items)  {
 
-            var application = this.get('application');
-            var modelTypesList = Ember.keys(Ember.get(application.config, 'structure.models'));
             items = Ember.A();
-            var currentRouteName = this.get('currentRouteName');
-            var item, route, isActive;
+            var models = this.get('currentController.appConfig.structure.models');
 
-            modelTypesList.forEach(function(modelType) {
-                route = modelType.dasherize();
-                isActive = currentRouteName.split('.')[0] === route;
+            var item, isActive, dasherizedModelType;
+            Ember.keys(models).forEach(function(modelType) {
+
+                // if the model has no view, skip it
+                if (!Ember.get(models, modelType+'.views.collection.index')) {
+                    return;
+                }
+
+                dasherizedModelType = modelType.dasherize();
+                isActive = currentRouteName.split('.')[1] === dasherizedModelType;
 
                 item = Ember.Object.create({
                     label: modelType,
-                    route: modelType.dasherize(),
+                    route: 'eureka.'+dasherizedModelType,
                     isActive: isActive
                 });
 
                 items.pushObject(item);
             });
+
+        } else {
+            items = items.map(function(item) {
+                item.isActive = currentRouteName === item.route;
+                return item;
+            });
         }
+
         return items;
-    }.property('config.items.[]', 'application', 'currentRouteName')
+    }.property('config.items.[]', 'currentRouteName')
 });
