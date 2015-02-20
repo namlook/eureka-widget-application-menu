@@ -8,7 +8,7 @@ export default WidgetApplication.extend({
         var currentRouteName = this.get('currentRouteName');
 
         var items = this.get('config.items');
-        if (!items)  {
+        if (items === 'auto')  {
 
             items = Ember.A();
             var models = this.get('currentController.appConfig.structure.models');
@@ -35,7 +35,7 @@ export default WidgetApplication.extend({
 
         } else {
             items = items.map(function(item) {
-                item.isActive = currentRouteName === item.route;
+                Ember.set(item, 'isActive', currentRouteName === item.route);
                 return item;
             });
         }
