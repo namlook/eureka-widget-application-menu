@@ -1,6 +1,34 @@
 # Eureka-widget-application-menu
 
-A menu for Eureka's applications.
+A menu for Eureka's applications. Usage:
+
+    {
+        application: {
+            name: <application name>
+            views: {
+                widgets: [
+                    {
+                        type: 'application-menu',
+                        columns: 3,
+                        // if `items` is `auto`, display all
+                        // pods that has the view: `collection.index`
+                        items: [
+                            {
+                                // the displayed name of the menu item
+                                label: 'My dear users',
+                                // the route to target
+                                route: 'eureka.user.collection.index'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'outlet',
+                        columns: 9,
+                    }
+                ]
+            }
+        }
+    }
 
 ## Installation
 
