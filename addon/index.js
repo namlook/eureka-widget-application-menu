@@ -7,25 +7,25 @@ export default WidgetApplication.extend({
 
         var currentRouteName = this.get('currentRouteName');
 
-        var items = this.get('config.items');
+        var items = this.get('config.items') || 'auto';
         if (items === 'auto')  {
 
             items = Ember.A();
-            var models = this.get('currentController.appConfig.structure.models');
+            var resources = this.get('eurekaConfig.resources');
 
             var item, isActive, dasherizedModelType;
-            Ember.keys(models).forEach(function(modelType) {
+            Ember.keys(resources).forEach(function(resource) {
 
                 // if the model has no view, skip it
-                if (!Ember.get(models, modelType+'.views.collection.index')) {
+                if (!Ember.get(resources, resource+'.views')) {
                     return;
                 }
 
-                dasherizedModelType = modelType.dasherize();
+                dasherizedModelType = resource.dasherize();
                 isActive = currentRouteName.split('.')[1] === dasherizedModelType;
 
                 item = Ember.Object.create({
-                    label: modelType,
+                    label: resource,
                     route: 'eureka.'+dasherizedModelType,
                     isActive: isActive
                 });

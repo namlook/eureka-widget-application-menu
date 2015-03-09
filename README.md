@@ -10,8 +10,8 @@ A menu for Eureka's applications. Usage:
                     {
                         type: 'application-menu',
                         columns: 3,
-                        // if `items` is `auto`, display all
-                        // pods that has the view: `collection.index`
+                        // if `items` is undefined or `auto`, display
+                        //  all resources that have a view.
                         items: [
                             {
                                 // the displayed name of the menu item
