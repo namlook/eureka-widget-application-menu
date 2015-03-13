@@ -1,0 +1,12 @@
+
+body {
+  padding-top: 50px;
+}
+
+.eureka-widget .widget-application-menu {
+    position: fixed;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding-top: 25px;
+    height: 100%;
+}
