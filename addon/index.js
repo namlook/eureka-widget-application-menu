@@ -14,7 +14,7 @@ export default WidgetApplication.extend({
             var resources = this.get('eurekaConfig.resources');
 
             var item, isActive, dasherizedModelType;
-            Ember.keys(resources).forEach(function(resource) {
+            Object.keys(resources).forEach(function(resource) {
 
                 // if the model has no view, skip it
                 if (!Ember.get(resources, resource+'.views')) {
