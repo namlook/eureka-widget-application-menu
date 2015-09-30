@@ -3,7 +3,7 @@ import WidgetApplication from 'ember-eureka/widget-application';
 
 export default WidgetApplication.extend({
 
-    menuItems: function() {
+    menuItems: Ember.computed('config.items.[]', 'currentRouteName', function() {
 
         var currentRouteName = this.get('currentRouteName');
 
@@ -41,5 +41,5 @@ export default WidgetApplication.extend({
         }
 
         return items;
-    }.property('config.items.[]', 'currentRouteName')
+    })
 });

@@ -1,7 +1,9 @@
 <nav>
     <ul class="nav nav-pills nav-stacked">
-    {{#each item in menuItems}}
-        <li role="presentation" {{bind-attr class="item.isActive:active"}}>{{#link-to item.route}} {{item.label}} {{/link-to}}</li>
+    {{#each menuItems as |item|}}
+        <li role="presentation" class="{{if item.isActive 'active'}}">
+            {{#link-to item.route}} {{item.label}} {{/link-to}}
+        </li>
     {{/each}}
     </ul>
 </nav>
