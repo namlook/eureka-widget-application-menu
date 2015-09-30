@@ -1,6 +1,6 @@
 {
   "name": "eureka-widget-application-menu",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A menu for Eureka's applications.",
   "directories": {
     "doc": "doc",
